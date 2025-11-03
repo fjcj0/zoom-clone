@@ -1,10 +1,18 @@
+import Navbar from '@/components/Navbar';
+import Sidebar from '@/components/Sidebar';
 import { ReactNode } from 'react';
 const HomeLayout = ({ children }: { children: ReactNode }) => {
     return (
-        <main>
-            <h1 className='text-red-500 font-bold text-3xl'>NavBar</h1>
-            {children}
-            <h1>Footer</h1>
+        <main className='relative'>
+            <Navbar />
+            <div className='flex'>
+                <Sidebar />
+                <section className='flex min-h-screen flex-1 flex-col px-6 pb-6 pt-28 max-md:pb-14 sm:px-14'>
+                    <div className='w-full'>
+                        {children}
+                    </div>
+                </section>
+            </div>
         </main>
     );
 }
