@@ -66,3 +66,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+.cl-internal-1dauvpw{
+  display: none;
+}
+.cl-providerIcon__github{
+  filter: invert(1);
+}
+.cl-internal-rrswn7[data-variant="outline"] {
+  border-width: 0px;
+  box-shadow: none;
+}
+.cl-internal-rrswn7[data-variant="outline"]:hover{
+  background: transparent;
+}
+.cl-internal-l2l775{
+display: none;
+}
+.cl-button__manageAccount{
+  color: white;
+}
+.cl-button__signOut{
+  color: white
+}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 const Navbar = () => {
     return (
         <div className="flex justify-between items-center fixed top-0 z-50 w-full bg-dark-1 px-6 py-4 lg:px-10">
@@ -15,6 +16,9 @@ const Navbar = () => {
                 <p className="text-[26px] font-bold text-white max-sm:hidden">Yoom</p>
             </Link>
             <div className="flex items-center">
+                <SignedIn>
+                    <UserButton />
+                </SignedIn>
                 <MobileNav />
             </div>
         </div>
