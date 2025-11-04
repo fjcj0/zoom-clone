@@ -1,9 +1,30 @@
-const Meeting = async ({ params }: { params: { id: string } }) => {
-    const { id } = await params;
+"use client";
+import Loader from "@/components/Loader";
+import MeetingRoom from "@/components/MeetingRoom";
+import MeetingSetup from "@/components/MeetingSetup";
+import { useGetCallById } from "@/hooks/useGetCallById";
+import { useUser } from "@clerk/nextjs";
+import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
+import { use, useState } from "react";
+const Meeting = ({ params }: { params: Promise<{ id: string }> }) => {
+    const resolvedParams = use(params);
+    const { id } = resolvedParams;
+    const { user, isLoaded } = useUser();
+    const [isSetupComplete, setIsSetupComplete] = useState<boolean>(false);
+    const { call, isCallLoading } = useGetCallById(id);
+    if (!isLoaded || isCallLoading) return (<Loader />)
     return (
-        <div>
-            <h1>Meeting room: #{id}</h1>
-        </div>
+        <main className="h-screen w-full">
+            <StreamCall call={call}>
+                <StreamTheme>
+                    {!isSetupComplete ? (
+                        <MeetingSetup setIsSetupComplete={setIsSetupComplete} />
+                    ) : (
+                        <MeetingRoom />
+                    )}
+                </StreamTheme>
+            </StreamCall>
+        </main>
     );
 }
 export default Meeting;

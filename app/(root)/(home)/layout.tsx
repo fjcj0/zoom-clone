@@ -1,6 +1,14 @@
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 import { ReactNode } from 'react';
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Yoom",
+    description: "Video calling app",
+    icons: {
+        icon: '/icons/logo.svg'
+    }
+};
 const HomeLayout = ({ children }: { children: ReactNode }) => {
     return (
         <main className='relative'>
